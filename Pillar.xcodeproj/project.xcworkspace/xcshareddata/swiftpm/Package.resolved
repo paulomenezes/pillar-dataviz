@@ -2,6 +2,24 @@
   "object": {
     "pins": [
       {
+        "package": "SwiftUICharts",
+        "repositoryURL": "https://github.com/AppPear/ChartView",
+        "state": {
+          "branch": "2.0.0-beta.2",
+          "revision": "caa75ecbc0d68f2b50d714909566406f80214186",
+          "version": null
+        }
+      },
+      {
+        "package": "SigmaSwiftStatistics",
+        "repositoryURL": "https://github.com/evgenyneu/SigmaSwiftStatistics.git",
+        "state": {
+          "branch": null,
+          "revision": "d36db09f97a1739edc8c63897220c7ecbb5de684",
+          "version": "9.0.2"
+        }
+      },
+      {
         "package": "SwiftCSV",
         "repositoryURL": "https://github.com/swiftcsv/SwiftCSV.git",
         "state": {

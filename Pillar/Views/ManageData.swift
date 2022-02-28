@@ -7,45 +7,17 @@
 
 import SwiftUI
 import SwiftCSV
+import SigmaSwiftStatistics
 
 struct ManageData: View {
-    @State var csvFile: CSV?
-    
+    @ObservedObject var columns: Columns = Columns(columns: [])
+
+    @Binding var csvFile: CSV?
+    @Binding var data: [[String]]
+
     @State var sortIndex = -1
     @State var sortType = 0
-    
-    @State var data: [[String]] = []
-    
-    @ObservedObject var columns: Columns = Columns(columns: [])
-    
     @State var columnSelected: Int?
-    
-    func load() {
-        do {
-            let path = Bundle.main.path(forResource: "netflix_titles", ofType: "csv")
-            csvFile = try CSV(url: URL(fileURLWithPath: path!))
-            
-            data = csvFile?.enumeratedRows ?? []
-            
-            columns.columns = (csvFile?.header ?? []).map({ header in
-                Column(
-                    originalName: header,
-                    name: parseTitle(header),
-                    hideColumn: false,
-                    role: .quantitative,
-                    type: .text
-                )
-            })
-        } catch {
-            print("error \(error)")
-        }
-    }
-    
-    func parseTitle(_ title: String) -> String {
-        return title.split(separator: "_").map { value in
-            String(value).capitalizingFirstLetter()
-        }.joined(separator: " ")
-    }
     
     func sortData()  {
         data = data.sorted(by: { (a, b) in
@@ -70,7 +42,11 @@ struct ManageData: View {
                                     Text(columns.columns[index].name)
                                         .font(.subheadline)
                                         .lineLimit(2)
+                                        .foregroundColor(columnSelected == index ? .orange : .blue)
+                                        .multilineTextAlignment(.leading)
                                 }
+                                
+                                Spacer()
                                 
                                 Button {
                                     if sortIndex == index {
@@ -83,6 +59,7 @@ struct ManageData: View {
                                     sortData()
                                 } label: {
                                     Image(systemName: sortIndex == index ? sortType == 0 ? "arrowtriangle.down.square.fill" : "arrowtriangle.up.square.fill" : "arrow.up.arrow.down.square.fill")
+                                        .foregroundColor(columnSelected == index ? .orange : .blue)
                                 }
                             }
                             .frame(maxWidth: .infinity, minHeight: 45)
@@ -106,26 +83,23 @@ struct ManageData: View {
                                     Divider()
                                         .frame(height: 1)
                                 }
+                                .background {
+                                    if columnSelected == item {
+                                        Rectangle()
+                                            .foregroundColor(.gray.opacity(0.05))
+                                    }
+                                }
                             }
                         }
                     }
                     .padding(.horizontal)
                 }
                 .frame(maxHeight: .infinity)
-                .offset(x: columnSelected != nil ? -316 : 0, y: 0)
+                .offset(x: columnSelected != nil && columnSelected! > columns.columns.count - 4 ? -316 : 0, y: 0)
                 .overlay(
                     ManageDataColumnDetail(columns: columns, columnSelected: $columnSelected)
                 , alignment: .trailing)
             }
         }
-        .onAppear {
-            load()
-        }
-    }
-}
-
-struct ManageData_Previews: PreviewProvider {
-    static var previews: some View {
-        ManageData().previewInterfaceOrientation(.landscapeRight)
     }
 }

@@ -11,6 +11,11 @@
 		7576D51827CC72EB00674583 /* ManageDataColumnDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7576D51727CC72EB00674583 /* ManageDataColumnDetail.swift */; };
 		7576D51B27CC758400674583 /* Column.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7576D51A27CC758400674583 /* Column.swift */; };
 		7576D51D27CC80F900674583 /* Columns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7576D51C27CC80F900674583 /* Columns.swift */; };
+		75A1775127CCFE0D008E1BF4 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A1775027CCFE0D008E1BF4 /* Color.swift */; };
+		75A1775427CCFFA4008E1BF4 /* SigmaSwiftStatistics in Frameworks */ = {isa = PBXBuildFile; productRef = 75A1775327CCFFA4008E1BF4 /* SigmaSwiftStatistics */; };
+		75A1775727CD0EEB008E1BF4 /* ValueDistributor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A1775627CD0EEB008E1BF4 /* ValueDistributor.swift */; };
+		75A1775B27CD3D1A008E1BF4 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 75A1775A27CD3D1A008E1BF4 /* SwiftUICharts */; };
+		75A1775E27CD3D89008E1BF4 /* CreateVisualization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A1775D27CD3D89008E1BF4 /* CreateVisualization.swift */; };
 		75BDBB9027CB0565007146CB /* PillarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BDBB8F27CB0565007146CB /* PillarApp.swift */; };
 		75BDBB9227CB0565007146CB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BDBB9127CB0565007146CB /* ContentView.swift */; };
 		75BDBB9427CB0567007146CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75BDBB9327CB0567007146CB /* Assets.xcassets */; };
@@ -26,6 +31,9 @@
 		7576D51727CC72EB00674583 /* ManageDataColumnDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageDataColumnDetail.swift; sourceTree = "<group>"; };
 		7576D51A27CC758400674583 /* Column.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Column.swift; sourceTree = "<group>"; };
 		7576D51C27CC80F900674583 /* Columns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Columns.swift; sourceTree = "<group>"; };
+		75A1775027CCFE0D008E1BF4 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		75A1775627CD0EEB008E1BF4 /* ValueDistributor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueDistributor.swift; sourceTree = "<group>"; };
+		75A1775D27CD3D89008E1BF4 /* CreateVisualization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateVisualization.swift; sourceTree = "<group>"; };
 		75BDBB8C27CB0565007146CB /* Pillar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pillar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75BDBB8F27CB0565007146CB /* PillarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillarApp.swift; sourceTree = "<group>"; };
 		75BDBB9127CB0565007146CB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -41,7 +49,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75A1775B27CD3D1A008E1BF4 /* SwiftUICharts in Frameworks */,
 				75FA0E2827CC15A7005B473C /* SwiftCSV in Frameworks */,
+				75A1775427CCFFA4008E1BF4 /* SigmaSwiftStatistics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				7576D51527CC47A300674583 /* String.swift */,
+				75A1775027CCFE0D008E1BF4 /* Color.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -63,6 +74,25 @@
 				7576D51C27CC80F900674583 /* Columns.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		75A1775527CD0ED7008E1BF4 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				75A1775627CD0EEB008E1BF4 /* ValueDistributor.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		75A1775C27CD3D27008E1BF4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				75BDBB9D27CB174D007146CB /* UploadData.swift */,
+				75FA0E2127CC12E7005B473C /* ManageData.swift */,
+				7576D51727CC72EB00674583 /* ManageDataColumnDetail.swift */,
+				75A1775D27CD3D89008E1BF4 /* CreateVisualization.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		75BDBB8327CB0565007146CB = {
@@ -84,16 +114,15 @@
 		75BDBB8E27CB0565007146CB /* Pillar */ = {
 			isa = PBXGroup;
 			children = (
+				75A1775C27CD3D27008E1BF4 /* Views */,
+				75A1775527CD0ED7008E1BF4 /* Utils */,
 				7576D51927CC757A00674583 /* Models */,
 				7576D51427CC479700674583 /* Extensions */,
 				75BDBB8F27CB0565007146CB /* PillarApp.swift */,
 				75BDBB9127CB0565007146CB /* ContentView.swift */,
 				75BDBB9327CB0567007146CB /* Assets.xcassets */,
 				75BDBB9527CB0567007146CB /* Preview Content */,
-				75BDBB9D27CB174D007146CB /* UploadData.swift */,
-				75FA0E2127CC12E7005B473C /* ManageData.swift */,
 				75FA0E2527CC13F4005B473C /* Data */,
-				7576D51727CC72EB00674583 /* ManageDataColumnDetail.swift */,
 			);
 			path = Pillar;
 			sourceTree = "<group>";
@@ -132,6 +161,8 @@
 			name = Pillar;
 			packageProductDependencies = (
 				75FA0E2727CC15A7005B473C /* SwiftCSV */,
+				75A1775327CCFFA4008E1BF4 /* SigmaSwiftStatistics */,
+				75A1775A27CD3D1A008E1BF4 /* SwiftUICharts */,
 			);
 			productName = Pillar;
 			productReference = 75BDBB8C27CB0565007146CB /* Pillar.app */;
@@ -163,6 +194,8 @@
 			mainGroup = 75BDBB8327CB0565007146CB;
 			packageReferences = (
 				75FA0E2627CC15A7005B473C /* XCRemoteSwiftPackageReference "SwiftCSV" */,
+				75A1775227CCFFA4008E1BF4 /* XCRemoteSwiftPackageReference "SigmaSwiftStatistics" */,
+				75A1775927CD3D1A008E1BF4 /* XCRemoteSwiftPackageReference "ChartView" */,
 			);
 			productRefGroup = 75BDBB8D27CB0565007146CB /* Products */;
 			projectDirPath = "";
@@ -196,9 +229,12 @@
 				75BDBB9227CB0565007146CB /* ContentView.swift in Sources */,
 				7576D51627CC47A300674583 /* String.swift in Sources */,
 				7576D51B27CC758400674583 /* Column.swift in Sources */,
+				75A1775727CD0EEB008E1BF4 /* ValueDistributor.swift in Sources */,
 				7576D51827CC72EB00674583 /* ManageDataColumnDetail.swift in Sources */,
 				75FA0E2227CC12E7005B473C /* ManageData.swift in Sources */,
 				75BDBB9027CB0565007146CB /* PillarApp.swift in Sources */,
+				75A1775127CCFE0D008E1BF4 /* Color.swift in Sources */,
+				75A1775E27CD3D89008E1BF4 /* CreateVisualization.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,6 +439,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		75A1775227CCFFA4008E1BF4 /* XCRemoteSwiftPackageReference "SigmaSwiftStatistics" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/SigmaSwiftStatistics.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+		75A1775927CD3D1A008E1BF4 /* XCRemoteSwiftPackageReference "ChartView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppPear/ChartView";
+			requirement = {
+				branch = "2.0.0-beta.2";
+				kind = branch;
+			};
+		};
 		75FA0E2627CC15A7005B473C /* XCRemoteSwiftPackageReference "SwiftCSV" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/swiftcsv/SwiftCSV.git";
@@ -414,6 +466,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		75A1775327CCFFA4008E1BF4 /* SigmaSwiftStatistics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 75A1775227CCFFA4008E1BF4 /* XCRemoteSwiftPackageReference "SigmaSwiftStatistics" */;
+			productName = SigmaSwiftStatistics;
+		};
+		75A1775A27CD3D1A008E1BF4 /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 75A1775927CD3D1A008E1BF4 /* XCRemoteSwiftPackageReference "ChartView" */;
+			productName = SwiftUICharts;
+		};
 		75FA0E2727CC15A7005B473C /* SwiftCSV */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 75FA0E2627CC15A7005B473C /* XCRemoteSwiftPackageReference "SwiftCSV" */;

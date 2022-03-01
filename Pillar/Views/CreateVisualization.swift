@@ -8,6 +8,7 @@
 import SwiftUI
 import SwiftCSV
 import SwiftUICharts
+import SigmaSwiftStatistics
 
 struct CreateVisualization: View {
     @ObservedObject var columns: Columns = Columns(columns: [])
@@ -25,14 +26,39 @@ struct CreateVisualization: View {
     
     var demoData: [Double] = [8, 2, 4, 6, 12, 9, 2]
     
-    @State var d: [Double] = []
+    @State var d: [(String, Double)] = []
     
     func updateData() {
-        if xAxis > -1 {
-            d = data.map { d in
-                Double(d[xAxis]) ?? 0
+        print("start update \(xAxis) \(yAxis)")
+        if xAxis > -1 && yAxis > -1 {
+            var map: [String: [Double]] = [:]
+            
+            d.removeAll()
+            
+            data.forEach { value in
+                let x = value[xAxis]
+                let y = value[yAxis]
+                
+                if !value.isEmpty {
+                    let yValue = Double(y)
+                    
+                    if yValue != nil {
+                        if (map[x] == nil) {
+                            map[x] = []
+                        }
+                        
+                        map[x]!.append(yValue!)
+                    }
+                }
             }
+            
+            map.forEach { (key: String, value: [Double]) in
+                d.append((key, Sigma.average(value) ?? 0))
+            }
+            
+            print("end update \(d)")
         }
+        
     }
         
     var body: some View {
@@ -104,6 +130,8 @@ struct CreateVisualization: View {
                                     if xAxis == yAxis {
                                         xAxis = -1
                                     }
+                                    
+                                    updateData()
                                     
                                     xAxisExpanded = false
                                     yAxisExpanded = false
